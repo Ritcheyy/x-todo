@@ -1,0 +1,20 @@
+.nav{
+    /*display: block;*/
+    height: 50px;
+    padding-right: 25px;
+    padding-left: 25px;
+}
+
+.nav .nav-item img{
+    cursor: pointer;
+    max-height: 50px;
+}
+
+.nav .nav-item .back-arrow{
+    padding: 1rem;
+}
+
+.nav .nav-link{
+    padding-right: 0;
+    padding-left: 0;
+}

@@ -1,0 +1,16 @@
+.clock h1{
+    font-size: 6rem !important;
+    /*padding-bottom: 0 !important;*/
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.clock h1 span{
+    font-size: 18px;
+}
+
+.clock p.date{
+    /*float: right;*/
+    margin-top: -20px !important;
+    margin-left: 130px;
+}

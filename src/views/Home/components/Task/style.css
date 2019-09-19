@@ -1,0 +1,31 @@
+.task {
+    height: 254px;
+    width: 218px;
+    background-color: #ffffff;
+    border-radius: 24px;
+    margin-right: 30px;
+    padding: 40px 25px;
+    box-shadow: 7px 7px 1px #DFE7EE;
+    flex-shrink: 0;
+}
+
+.task .task__header__title{
+    font-size: 16px;
+    color: #627E97;
+}
+
+.task .task_header_btn{
+    color: #279AFF;
+}
+
+.task.task-dark .task__header__title{
+    color: #ffffff;
+}
+
+.task.task-dark .task_header_btn{
+    color: #ffffff;
+}
+
+.task .task__body{
+    margin-top: 40px;
+}

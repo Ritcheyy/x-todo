@@ -1,0 +1,14 @@
+body{
+    font-family: 'Poppins', sans-serif !important;
+    background: #F1F4F6;
+    height: 100%;
+    width: 100%;
+}
+
+.text-custom-primary{
+    color: #627E97;
+}
+
+.text-custom-secondary{
+    color: #279AFF;
+}

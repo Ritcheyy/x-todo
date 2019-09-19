@@ -1,0 +1,35 @@
+.task-view {
+    height: 90vh;
+    width: 100%;
+    background-color: #ffffff;
+    border-top-right-radius: 50px;
+    margin-top: 20px;
+    margin-right: 30px;
+    padding: 60px 50px;
+    flex-shrink: 0;
+}
+
+.task-view .task-view__header__title{
+    /*font-size: 16px;*/
+    color: #627E97;
+}
+
+.task-view .task-view_header_btn{
+    color: #279AFF;
+}
+
+.task-view .task-view_header_btn i{
+    font-size: 24px;
+}
+
+.task-view.task-view-dark .task-view__header__title{
+    color: #ffffff;
+}
+
+.task-view.task-view-dark .task-view_header_btn{
+    color: #ffffff;
+}
+
+.task-view .task-view__body{
+    margin-top: 30px;
+}

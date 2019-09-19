@@ -1,0 +1,29 @@
+.home{
+    padding-right: 25px;
+    padding-left: 25px;
+}
+
+#btnAddTask {
+    padding: 10px 12px;
+    border-radius: 8px;
+    box-shadow: none;
+    margin: 0;
+}
+
+.tasks-slider {
+    width: 107%;
+    /*height: 354px;*/
+    margin-top: 80px;
+    /*margin-left: -25px;*/
+    margin-right: -25px;
+    padding-bottom: 30px;
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    -ms-overflow-style: none;
+    /*scrollbar-width: none;*/
+}
+
+.tasks-slider::-webkit-scrollbar {
+    display: none;
+}
