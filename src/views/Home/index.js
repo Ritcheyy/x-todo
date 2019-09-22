@@ -3,8 +3,8 @@ import Greeting from "./components/Greeting"
 import AppClock from "./components/AppClock"
 import Task from "./components/Task"
 import "./style.css"
-import NavBar from "../../components/Layouts/Navbar";
-import { withRouter } from "react-router-dom";
+import NavBar from "../../components/Layouts/Navbar"
+import {withRouter} from "react-router-dom"
 
 class Home extends React.Component {
         constructor(props) {
@@ -28,9 +28,11 @@ class Home extends React.Component {
                                                         id="btnAddTask"><i className="fas fa-plus"></i></button>
                                         </div>
                                         <div className="tasks-slider">
-                                                <Task onClick={this.openTask} tasks={this.props.tasks} markComplete={this.props.markComplete}/>
-                                                <Task tasks={this.props.tasks} markComplete={this.props.markComplete}
-                                                      mode="dark" color="blue"/>
+                                                {/*onClick={this.openTask}*/}
+                                                <Task tasks={this.props.tasks} markComplete={this.props.markComplete} color="red"/>
+                                                
+                                                {/*<Task tasks={this.props.tasks} markComplete={this.props.markComplete} mode="dark" color="blue"/>*/}
+                                                
                                                 <Task tasks={this.props.tasks} markComplete={this.props.markComplete}
                                                       mode="dark" color="red"/>
                                         </div>

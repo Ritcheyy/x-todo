@@ -1,0 +1,60 @@
+body.no-scroll {
+    overflow: hidden;
+}
+.fsm{
+    transition: 0.3s;
+    cursor: pointer;
+}
+.fsm .modal-content {
+    height: 0;
+    width: 0;
+    margin: 0;
+}
+.fsm.red{
+    background: linear-gradient(135deg, #f44336 0%, #f44336 100%);
+}
+.fsm.apple {
+    background: linear-gradient(135deg, #83458e 0%, #608dc9 100%);
+}
+.fsm.pied {
+    background: linear-gradient(135deg, #6ecdc7 0%, #c7e4ec 100%);
+}
+.fsm.codepen {
+    background: linear-gradient(135deg, #778899 0%, #DCDCDC 100%);
+}
+.fsm.google {
+    background: linear-gradient(135deg, #4285f4 0%, #ea4335 100%);
+}
+.fsm.growing h1.modal-content {
+    height: auto;
+    margin: 0;
+    opacity: 0;
+    transition-delay: 0.3s;
+}
+.fsm.full-screen {
+    height: 100vh;
+    z-index: 100;
+    margin: 0;
+    border-radius: 0;
+}
+.fsm.full-screen .modal-content {
+    height: auto;
+    width: auto;
+    margin: inital;
+}
+.fsm.full-screen h1.modal-content {
+    transition-delay: 0.3s;
+    opacity: 1;
+}
+.fsm.shrinking h1.modal-content {
+    transition-delay: 0s;
+    transition: 0.3s;
+    opacity: 0;
+    display: block;
+}
+.fsm-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    box-sizing: border-box;
+}

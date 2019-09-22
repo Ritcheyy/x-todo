@@ -1,6 +1,6 @@
 import React from "react"
 import TaskItem from "./components/TaskItem"
-import "./style.css"
+// import "./style.css"
 import NavBar from "../../components/Layouts/Navbar";
 import {Link} from "react-router-dom";
 
