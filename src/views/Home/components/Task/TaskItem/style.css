@@ -3,6 +3,7 @@
     padding-top: 3px;
     color: #627E97;
     font-weight: normal;
+    pointer-events: none;
 }
 
 .task-dark .task-item label{

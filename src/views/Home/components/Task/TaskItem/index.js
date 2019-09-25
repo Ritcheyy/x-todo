@@ -9,8 +9,7 @@ function TaskItem(props) {
                         <div className={"custom-control custom-checkbox align-content-center " + (completed === true ? 'done' : '')}>
                                 <input type="checkbox" className="custom-control-input"
                                        id={id}
-                                       defaultChecked={completed}
-                                       onChange={props.markComplete.bind(this, id)}/>
+                                       defaultChecked={completed}/>
                                 <label className="custom-control-label" htmlFor={id}>
                                         <p className="strike">
                                                 {title}

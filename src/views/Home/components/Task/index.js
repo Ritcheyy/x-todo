@@ -3,6 +3,9 @@ import TaskItem from "./TaskItem"
 import "./style.css"
 
 class Task extends React.Component {
+        constructor(props) {
+                super(props);
+        }
         
         render() {
                 return (
@@ -14,7 +17,7 @@ class Task extends React.Component {
                                 </div>
                                 <div className="task__body">
                                         { this.props.tasks.map(task => {
-                                                return <TaskItem task={task} markComplete={this.props.markComplete} key={task.id}/>
+                                                return <TaskItem task={task} key={task.id}/>
                                         }) }
                                         
                                 </div>
