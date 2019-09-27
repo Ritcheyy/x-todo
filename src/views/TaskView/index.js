@@ -22,16 +22,16 @@ class TaskView extends React.Component {
                                         <NavBar type="back"/>
                                                 <div className={"task-view " + (this.props.list.color && this.props.list.color !== 'white' ? 'task-view-dark ' + this.props.list.color : '')}>
                                                         <div className="task-view__header clearfix">
-                                                                <h4 className="task-view__header__title float-left font-weight-bold">{ this.props.list.title }</h4>
+                                                                <h5 className="task-view__header__title float-left font-weight-bold">{ this.props.list.title }</h5>
                                                                 
-                                                                <Link to="/task/new">
+                                                                <Link to={ "/task/new/" +this.props.list.id.toString() }>
                                                                         <div className="task-view_header_btn float-right">
                                                                                 <i className="fa fa-plus"></i>
                                                                         </div>
                                                                 </Link>
                                                         </div>
                                                         <div className="task-view__body">
-                                                                {this.props.list.tasks.map(task => {
+                                                                {this.props.list.tasks.sort((a,b) => b.id - a.id).map(task => {
                                                                         return <TaskItem task={task} getTaskID={this.getTaskID} key={task.id}/>
                                                                 })}
                                                         </div>

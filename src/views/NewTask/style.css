@@ -51,3 +51,7 @@
     text-transform: none;
     color: #FFF;
 }
+
+.new-task .invalid-feedback{
+    font-size: 10px !important;
+}

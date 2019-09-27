@@ -12,6 +12,7 @@
       <change beforePath="$PROJECT_DIR$/src/views/Home/components/Task/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Home/components/Task/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/Home/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Home/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/NewTask/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/NewTask/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/NewTask/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/NewTask/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/TaskView/components/TaskItem/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/TaskView/components/TaskItem/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/TaskView/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/TaskView/index.js" afterDir="false" />
     </list>
@@ -42,38 +43,6 @@
   </component>
   <component name="FavoritesManager">
     <favorites_list name="x-todo" />
-  </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>import</find>
-      <find>import:</find>
-      <find>Roboto</find>
-      <find>lightbox</find>
-      <find>../img//overlays/01.png</find>
-      <find>font-weigh</find>
-      <find>js</find>
-      <find>props.task.completed</find>
-      <find>task</find>
-      <find>task-item</find>
-      <find>task-view</find>
-      <find>new-task_button</find>
-      <find>waves-light</find>
-      <find>strike</find>
-      <find>roboto</find>
-      <find>robo</find>
-      <find>task-dark</find>
-    </findStrings>
-    <replaceStrings>
-      <replace>asset/js</replace>
-      <replace>assets/js</replace>
-      <replace>completed</replace>
-      <replace>task-view</replace>
-      <replace>task-view-item</replace>
-      <replace>new-task</replace>
-      <replace>task-dark</replace>
-      <replace>task-view-dark</replace>
-      <replace>let</replace>
-    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -157,7 +126,7 @@
       <workItem from="1569416088880" duration="514000" />
       <workItem from="1569416720157" duration="1212000" />
       <workItem from="1569419839003" duration="200000" />
-      <workItem from="1569420587331" duration="18418000" />
+      <workItem from="1569420587331" duration="27960000" />
     </task>
     <servers />
   </component>

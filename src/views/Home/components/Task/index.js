@@ -13,7 +13,7 @@ class Task extends React.Component {
                                         </div>
                                 </div>
                                 <div className="task__body">
-                                        { this.props.list.tasks.slice(0,4).map(task => {
+                                        { this.props.list.tasks.sort((a,b) => b.id - a.id).slice(0,4).map(task => {
                                                 return <TaskItem task={task} key={ task.id }/>
                                         }) }
                                 </div>

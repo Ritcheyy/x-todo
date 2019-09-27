@@ -112,6 +112,22 @@ class App extends React.Component {
                 })
         };
         
+        createTask = (task) => {
+                this.setState({
+                        taskList: this.state.taskList.map(list => {
+                                if (list.id === parseInt(task.listId)) {
+                                        let newId = list.tasks.length + 1;
+                                        list.tasks.push({
+                                                id: newId,
+                                                title: task.title,
+                                                completed: false,
+                                        })
+                                }
+                                console.log(list);
+                                return list
+                        })
+                })
+        };
         
         render() {
                 return (
@@ -122,12 +138,18 @@ class App extends React.Component {
                                                         <Home taskList={this.state.taskList} markComplete={this.markComplete}/>
                                                 )}/>
                 
-                                                <Route path="/task/new" render={props => (
-                                                        <NewTask/>
+                                                <Route path="/task/new/:id" render={props => (
+                                                        <NewTask listId={props.match.params.id} createTask={ this.createTask }/>
                                                 )}/>
                                                 
-                                                <Route path="/task/:id" render={props => (
+                                                <Route strict exact path="/task/:id" render={props => (
                                                         <TaskView list={this.state.taskList.find(list => list.id.toString() === props.match.params.id)} markComplete={this.markComplete}/>
+                                                )}/>
+                                                
+                                                <Route render={() => (
+                                                        <div className="text-center">
+                                                                <h4>404!</h4>
+                                                        </div>
                                                 )}/>
                                         </Switch>
                                 </div>
