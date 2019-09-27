@@ -1,39 +1,113 @@
 import React from 'react'
-import {BrowserRouter as Router, Route} from "react-router-dom"
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom"
 import "./global.css"
 import Home from "./views/Home"
 import TaskView from "./views/TaskView"
 import NewTask from "./views/NewTask"
+import getRandomColor from "./utils/colors"
 
 class App extends React.Component {
         constructor(props) {
                 super(props);
                 this.state = {
-                        tasks: [
+                        taskList: [
                                 {
                                         id: 1,
-                                        title: 'Wash Clothes',
-                                        completed: true,
+                                        title: 'Urgent',
+                                        tasks: [
+                                                {
+                                                        id: 1,
+                                                        title: 'Wash Clothes',
+                                                        completed: true,
+                                                }, {
+                                                        id: 2,
+                                                        title: 'Read Books',
+                                                        completed: false,
+                                                }, {
+                                                        id: 3,
+                                                        title: 'Write Clean Codes Write Clean Codes',
+                                                        completed: false,
+                                                },{
+                                                        id: 4,
+                                                        title: 'Read Bible',
+                                                        completed: false,
+                                                },
+                                        ],
+                                        color: getRandomColor()
                                 }, {
                                         id: 2,
-                                        title: 'Read Books',
-                                        completed: false,
+                                        title: 'Today',
+                                        tasks: [
+                                                {
+                                                        id: 1,
+                                                        title: 'Read JS',
+                                                        completed: false,
+                                                }, {
+                                                        id: 2,
+                                                        title: 'Watch GOT',
+                                                        completed: true,
+                                                }, {
+                                                        id: 3,
+                                                        title: 'Goto Party',
+                                                        completed: false,
+                                                }
+                                        ],
+                                        color: getRandomColor()
                                 }, {
                                         id: 3,
-                                        title: 'Write Clean Codes Write Clean Codes',
-                                        completed: false,
-                                }
-                        ]
+                                        title: 'Later',
+                                        tasks: [
+                                                {
+                                                        id: 1,
+                                                        title: 'See my Guy',
+                                                        completed: false,
+                                                }, {
+                                                        id: 2,
+                                                        title: 'Call Dad',
+                                                        completed: false,
+                                                }, {
+                                                        id: 3,
+                                                        title: 'Sleep',
+                                                        completed: false,
+                                                }
+                                        ],
+                                        color: getRandomColor()
+                                }, {
+                                        id: 4,
+                                        title: 'Budget',
+                                        tasks: [
+                                                {
+                                                        id: 1,
+                                                        title: 'Go Cool Stuff',
+                                                        completed: true,
+                                                }, {
+                                                        id: 2,
+                                                        title: 'Prepare for Church',
+                                                        completed: true,
+                                                }, {
+                                                        id: 3,
+                                                        title: 'Write Clean Codes Write Clean Codes',
+                                                        completed: true,
+                                                }
+                                        ],
+                                        color: getRandomColor()
+                                },
+                        ],
                 }
         }
         
-        markComplete = (id) => {
+        markComplete = (ids) => {
                 this.setState({
-                        tasks: this.state.tasks.map(task => {
-                                if (task.id === id) {
-                                        task.completed = !task.completed
+                        taskList: this.state.taskList.map(list => {
+                                if (list.id === ids.listId) {
+                                        list.tasks.map(task => {
+                                                if (task.id === ids.taskId){
+                                                        task.completed = !task.completed
+                                                }
+                                                return task
+                                        })
                                 }
-                                return task
+                                return list
                         })
                 })
         };
@@ -43,18 +117,19 @@ class App extends React.Component {
                 return (
                         <Router>
                                 <div className="App">
-                                        
-                                        <Route exact path="/" render={props => (
-                                                <Home tasks={this.state.tasks} markComplete={this.markComplete}/>
-                                        )}/>
-                                        
-                                        <Route exact path="/task" render={props => (
-                                                <TaskView tasks={this.state.tasks} markComplete={this.markComplete}/>
-                                        )}/>
-                                        
-                                        <Route exact path="/task/new" render={props => (
-                                                <NewTask/>
-                                        )}/>
+                                        <Switch>
+                                                <Route exact path="/" render={props => (
+                                                        <Home taskList={this.state.taskList} markComplete={this.markComplete}/>
+                                                )}/>
+                
+                                                <Route path="/task/new" render={props => (
+                                                        <NewTask/>
+                                                )}/>
+                                                
+                                                <Route path="/task/:id" render={props => (
+                                                        <TaskView list={this.state.taskList.find(list => list.id.toString() === props.match.params.id)} markComplete={this.markComplete}/>
+                                                )}/>
+                                        </Switch>
                                 </div>
                         </Router>
                 );

@@ -5,28 +5,18 @@ import Task from "./components/Task"
 import "./style.css"
 import NavBar from "../../components/Layouts/Navbar"
 import { withRouter } from "react-router-dom"
-import Fade from "react-reveal/Fade"
-import getRandomColor from "../../utils/colors"
-import TaskItem from "./components/Task/TaskItem";
+import Slide from "react-reveal/Slide";
 
 
 class Home extends React.Component {
-        constructor(props) {
-                super(props);
-        }
-        
-        openTask = (color) => {
-                if (color === 'white') color = '';
-                setTimeout(() => this.props.history.push('/task', {
-                        color
-                }), 150);
+        openTask = (id) => {
+                setTimeout(() => this.props.history.push(`/task/${id}`), 150);
         }
         
         render() {
-                console.log(getRandomColor());
                 return (
                         <React.Fragment>
-                                <Fade big>
+                                <Slide left>
                                         <NavBar/>
                                         <div className="home mb-5">
                                                 <Greeting/>
@@ -38,18 +28,13 @@ class Home extends React.Component {
                                                 </div>
                                                 <div className="tasks-slider">
                                                         {
-                                                                [1,2,3].map(task => {
-                                                                        let color = getRandomColor()
-                                                                        return <Task onClick={() => this.openTask(color)} tasks={this.props.tasks} markComplete={this.props.markComplete} color={color}/>
+                                                                this.props.taskList.map(list => {
+                                                                        return <Task onClick={() => this.openTask(list.id)} list={list} key={list.id} markComplete={this.props.markComplete}/>
                                                                 })
-                                                        
                                                         }
-                                                        <Task onClick={() => this.openTask('white')} tasks={this.props.tasks} markComplete={this.props.markComplete}/>
-                                                        <Task onClick={() => this.openTask('blue')} tasks={this.props.tasks} markComplete={this.props.markComplete} color="blue"/>
-                                                        <Task onClick={() => this.openTask('red')} tasks={this.props.tasks} markComplete={this.props.markComplete} color="red"/>
                                                 </div>
                                         </div>
-                                </Fade>
+                                </Slide>
                         </React.Fragment>
                 )
         }

@@ -1,6 +1,6 @@
 import React from "react"
 import "./style.css"
-import {Link} from "react-router-dom"
+import { withRouter } from "react-router-dom"
 
 function NavBar(props) {
         return (
@@ -9,9 +9,7 @@ function NavBar(props) {
                                         props.type === 'back' ?
                                                 (
                                                         <li className="nav-item float-left ">
-                                                                <Link to={props.url}>
-                                                                        <img src={require('../../../assets/img/png/back-arrow.png')} className="nav-link pt-3 pb-3" alt="nav"/>
-                                                                </Link>
+                                                                        <img src={require('../../../assets/img/png/back-arrow.png')} className="nav-link pt-3 pb-3" alt="nav" onClick={props.history.goBack}/>
                                                         </li>
                                                 )
                                                 :
@@ -30,4 +28,4 @@ function NavBar(props) {
 }
 
 
-export default NavBar
+export default withRouter(NavBar)

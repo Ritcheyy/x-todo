@@ -8,11 +8,12 @@ const allowColors = [
         'cyan',
         'amber',
         'orange',
-        'black'
+        'black',
+        'white',
 ];
 
 const getRandomColor = () => {
-        let rand = Math.floor(Math.random() * 10);
+        let rand = Math.floor(Math.random() * 11);
         return allowColors[rand];
 }
 

@@ -3,52 +3,40 @@ import TaskItem from "./components/TaskItem"
 import "./style.css"
 import NavBar from "../../components/Layouts/Navbar"
 import {Link, withRouter} from "react-router-dom"
-import Zoom from "react-reveal/Zoom"
-import Fade from "react-reveal/Fade"
+import Slide from "react-reveal/Slide";
 
 class TaskView extends React.Component {
-        constructor(props) {
-                super(props);
+        getTaskID =(id) => {
+                let ids = {
+                        listId: this.props.list.id,
+                        taskId: id,
+                };
                 
-                this.state = {
-                        color: ''
-                }
-        }
-        
-        componentDidMount() {
-                const {color} = this.props.location.state;
-                this.setState({color: color});
+                this.props.markComplete(ids);
         }
         
         render() {
-                console.log(this.state.color);
                 return (
                         <React.Fragment>
-                                <Fade>
-                                        <NavBar type="back" url="/"/>
-                                </Fade>
-                                
-                                <Zoom>
-                                        <div className={"task-view " + (this.state.color ? 'task-view-dark ' + this.state.color : '')}>
-                                                <div className="task-view__header clearfix">
-                                                        <h4 className="task-view__header__title float-left font-weight-bold">Today</h4>
-                                                        
-                                                        <Link to="/task/new">
-                                                                <div className="task-view_header_btn float-right"><i
-                                                                        className="fa fa-plus"></i>
-                                                                </div>
-                                                        </Link>
+                                <Slide right>
+                                        <NavBar type="back"/>
+                                                <div className={"task-view " + (this.props.list.color && this.props.list.color !== 'white' ? 'task-view-dark ' + this.props.list.color : '')}>
+                                                        <div className="task-view__header clearfix">
+                                                                <h4 className="task-view__header__title float-left font-weight-bold">{ this.props.list.title }</h4>
+                                                                
+                                                                <Link to="/task/new">
+                                                                        <div className="task-view_header_btn float-right">
+                                                                                <i className="fa fa-plus"></i>
+                                                                        </div>
+                                                                </Link>
+                                                        </div>
+                                                        <div className="task-view__body">
+                                                                {this.props.list.tasks.map(task => {
+                                                                        return <TaskItem task={task} getTaskID={this.getTaskID} key={task.id}/>
+                                                                })}
+                                                        </div>
                                                 </div>
-                                                <div className="task-view__body">
-                                                        {this.props.tasks.map(task => {
-                                                                return <TaskItem task={task}
-                                                                                 markComplete={this.props.markComplete}
-                                                                                 key={task.id}/>
-                                                        })}
-                                                
-                                                </div>
-                                        </div>
-                                </Zoom>
+                                </Slide>
                         </React.Fragment>
                 )
         }
