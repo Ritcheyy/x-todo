@@ -7,14 +7,8 @@
     <list default="true" id="0997f44b-214c-400b-a86a-7111a89c03ed" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layouts/Navbar/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layouts/Navbar/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/colors.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/colors.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Home/components/Task/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Home/components/Task/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/Home/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Home/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/NewTask/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/NewTask/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/NewTask/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/NewTask/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/TaskView/components/TaskItem/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/TaskView/components/TaskItem/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/TaskView/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/TaskView/index.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -126,7 +120,8 @@
       <workItem from="1569416088880" duration="514000" />
       <workItem from="1569416720157" duration="1212000" />
       <workItem from="1569419839003" duration="200000" />
-      <workItem from="1569420587331" duration="27960000" />
+      <workItem from="1569420587331" duration="28992000" />
+      <workItem from="1570647466680" duration="3005000" />
     </task>
     <servers />
   </component>

@@ -123,10 +123,22 @@ class App extends React.Component {
                                                 completed: false,
                                         })
                                 }
-                                console.log(list);
                                 return list
                         })
                 })
+        };
+        
+        createList = (title) => {
+                let newList = {
+                        id: this.state.taskList.length + 1,
+                        title,
+                        tasks: [],
+                        color: getRandomColor()
+                }
+                this.setState({
+                        taskList: this.state.taskList.push(newList)
+                })
+                console.log(this.state.taskList);
         };
         
         render() {
@@ -135,7 +147,7 @@ class App extends React.Component {
                                 <div className="App">
                                         <Switch>
                                                 <Route exact path="/" render={props => (
-                                                        <Home taskList={this.state.taskList} markComplete={this.markComplete}/>
+                                                        <Home taskList={this.state.taskList} markComplete={this.markComplete} createList={this.createList}/>
                                                 )}/>
                 
                                                 <Route path="/task/new/:id" render={props => (

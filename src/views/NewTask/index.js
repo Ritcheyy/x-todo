@@ -3,6 +3,7 @@ import NavBar from "../../components/Layouts/Navbar"
 import "./style.css"
 import Slide from "react-reveal/Slide";
 import Fade from "react-reveal/Fade";
+import { withRouter } from "react-router-dom"
 
 class NewTask extends React.Component {
         constructor(props){
@@ -41,6 +42,7 @@ class NewTask extends React.Component {
                                 title: this.state.taskTitle
                         };
                         this.props.createTask(task);
+                        this.props.history.push(`/task/${this.props.listId}`);
                 } else {
                         this.setState({
                                 formError: true
@@ -94,4 +96,4 @@ class NewTask extends React.Component {
         
 }
 
-export default NewTask;
+export default withRouter(NewTask);
