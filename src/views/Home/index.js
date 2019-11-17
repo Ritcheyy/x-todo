@@ -15,7 +15,8 @@ class Home extends React.Component {
             day: "",
             date: "",
             month: "",
-            interval: ""
+            interval: "",
+            hour: ""
         };
     }
 
@@ -33,12 +34,15 @@ class Home extends React.Component {
             time: splittedTime[4]
         });
     }
-    componentWillMount() {
+    componentDidMount() {
         this.setState({
             interval: setInterval(() => {
                 this.getTime();
             }, 1000)
         });
+
+        const date = new Date();
+        this.setState({ hour: date.getUTCHours() });
     }
 
     componentWillUnmount() {
@@ -51,7 +55,7 @@ class Home extends React.Component {
                 <Slide left>
                     <NavBar />
                     <div className="home mb-5">
-                        <Greeting />
+                        <Greeting hour={this.state.hour} />
                         <AppClock
                             day={this.state.day}
                             month={this.state.month}
