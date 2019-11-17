@@ -7,7 +7,7 @@
 
 # testing
 /coverage
-
+/.netlify
 # production
 /build
 

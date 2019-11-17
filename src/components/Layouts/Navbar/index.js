@@ -1,31 +1,33 @@
-import React from "react"
-import "./style.css"
-import { withRouter } from "react-router-dom"
+import React from "react";
+import "./style.css";
+import { withRouter } from "react-router-dom";
 
 function NavBar(props) {
-        return (
-                <ul className="nav justify-content-between mx-0 mb-0 mt-3">
-                                {
-                                        props.type === 'back' ?
-                                                (
-                                                        <li className="nav-item float-left ">
-                                                                        <img src={require('../../../assets/img/png/back-arrow.png')} className="nav-link pt-3 pb-3" alt="nav" onClick={props.history.goBack}/>
-                                                        </li>
-                                                )
-                                                :
-                                                (
-                                                        <li className="nav-item float-left ">
-                                                                <img src={require('../../../assets/img/svg/hamburger.svg')} className="nav-link pt-3 pb-3" alt="nav"/>
-                                                        </li>
-                                                )
-                                }
-                        <li className="nav-item float-right">
-                                <img src={require('../../../assets/img/png/profile-img.png')} className="nav-link"
-                                     alt="nav"/>
-                        </li>
-                </ul>
-        )
+    return (
+        <ul className="nav justify-content-between mx-0 mb-0 mt-3">
+            {props.type === "back" ? (
+                <li className="nav-item float-left ">
+                    <img
+                        src={require("../../../assets/img/png/back-arrow.png")}
+                        className="nav-link pt-3 pb-3"
+                        alt="nav"
+                        onClick={props.history.goBack}
+                    />
+                </li>
+            ) : (
+                <li className="nav-item float-left ">
+                    <img
+                        src={require("../../../assets/img/svg/hamburger.svg")}
+                        className="nav-link pt-3 pb-3"
+                        alt="nav"
+                    />
+                </li>
+            )}
+            <li className="nav-item float-right">
+                <img src={require("../../../assets/img/png/profile-img.png")} className="nav-link" alt="nav" />
+            </li>
+        </ul>
+    );
 }
 
-
-export default withRouter(NavBar)
+export default withRouter(NavBar);
