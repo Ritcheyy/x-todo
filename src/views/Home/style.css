@@ -1,4 +1,4 @@
-.home{
+.home {
     padding-right: 25px;
     padding-left: 25px;
 }
@@ -26,4 +26,60 @@
 
 .tasks-slider::-webkit-scrollbar {
     display: none;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 65vh;
+    flex-direction: column;
+}
+
+.intro-text {
+    font-size: 30px;
+    padding-top: 80px;
+}
+
+.center input {
+    width: 80%;
+    /* margin: auto; */
+}
+.text-red {
+    color: red;
+}
+.text-pink {
+    color: pink;
+}
+.text-purple {
+    color: purple;
+}
+.text-teal {
+    color: teal;
+}
+.text-green {
+    color: green;
+}
+.text-lime {
+    color: lime;
+}
+.text-cyan {
+    color: cyan;
+}
+.text-amber {
+    color: blue;
+}
+.text-orange {
+    color: orange;
+}
+.text-black {
+    color: black;
+}
+.text-white {
+    color: yellow;
+}
+.form-control {
+    border: 1px solid black;
+    border-radius: 5px;
+    height: 60px;
 }
