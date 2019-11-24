@@ -16,12 +16,22 @@ class App extends React.Component {
     }
     componentDidMount() {
         if (window.localStorage.getItem("taskList")) {
-            this.setState({ taskList: JSON.parse(window.localStorage.getItem("taskList")) });
+            const lists = JSON.parse(window.localStorage.getItem("taskList"));
+            let usersList = [];
+            lists.map(list => {
+                if (list.user_id === window.localStorage.getItem("name")) {
+                    usersList.push(list);
+                }
+            });
+            this.setState({ taskList: usersList });
+            
         } else {
             window.localStorage.setItem("taskList", JSON.stringify([]));
             this.setState({ taskList: JSON.parse(window.localStorage.getItem("taskList")) });
         }
     }
+
+    
     markComplete = ids => {
         this.setState({
             taskList: this.state.taskList.map(list => {

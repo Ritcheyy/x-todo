@@ -1,7 +1,7 @@
 import React from "react";
 import "./style.css";
 import { withRouter, Link } from "react-router-dom";
-import Slide from "react-reveal/Slide";
+import Fade from "react-reveal/Fade";
 
 class NavBar extends React.Component {
     constructor() {
@@ -22,46 +22,45 @@ class NavBar extends React.Component {
     render() {
         return (
             <React.Fragment>
-                <Slide right>
-                    <div>
-                        <ul className="nav justify-content-between mx-0 mb-0 mt-3">
-                            {this.props.type === "back" ? (
-                                <li className="nav-item float-left ">
-                                    <img
-                                        src={require("../../../assets/img/png/back-arrow.png")}
-                                        className="nav-link pt-3 pb-3"
-                                        alt="nav"
-                                        onClick={this.props.history.goBack}
-                                    />
-                                </li>
-                            ) : (
-                                <li className="nav-item float-left ">
-                                    {this.state.openMenu ? (
-                                        <img
-                                            src={require("../../../assets/img/svg/cancel.svg")}
-                                            className="nav-link pt-3 pb-3 cancel_nav"
-                                            alt="nav"
-                                            onClick={() => this.toggleNav(false)}
-                                        />
-                                    ) : (
-                                        <img
-                                            src={require("../../../assets/img/svg/hamburger.svg")}
-                                            className="nav-link pt-3 pb-3"
-                                            alt="nav"
-                                            onClick={() => this.toggleNav(true)}
-                                        />
-                                    )}
-                                </li>
-                            )}
-                            <li className="nav-item float-right">
+                <div>
+                    <ul className="nav justify-content-between mx-0 mb-0 mt-3">
+                        {this.props.type === "back" ? (
+                            <li className="nav-item float-left ">
                                 <img
-                                    src={require("../../../assets/img/png/profile-img.png")}
-                                    className="nav-link"
+                                    src={require("../../../assets/img/png/back-arrow.png")}
+                                    className="nav-link pt-3 pb-3"
                                     alt="nav"
+                                    onClick={this.props.history.goBack}
                                 />
                             </li>
-                        </ul>
-
+                        ) : (
+                            <li className="nav-item float-left ">
+                                {this.state.openMenu ? (
+                                    <img
+                                        src={require("../../../assets/img/svg/cancel.svg")}
+                                        className="nav-link pt-3 pb-3 cancel_nav"
+                                        alt="nav"
+                                        onClick={() => this.toggleNav(false)}
+                                    />
+                                ) : (
+                                    <img
+                                        src={require("../../../assets/img/svg/hamburger.svg")}
+                                        className="nav-link pt-3 pb-3"
+                                        alt="nav"
+                                        onClick={() => this.toggleNav(true)}
+                                    />
+                                )}
+                            </li>
+                        )}
+                        <li className="nav-item float-right">
+                            <img
+                                src={require("../../../assets/img/png/profile-img.png")}
+                                className="nav-link"
+                                alt="nav"
+                            />
+                        </li>
+                    </ul>
+                    <Fade>
                         <div className={"sideBar " + (this.state.openMenu ? "display" : "")}>
                             <div className="title">X-Todo</div>
                             <div className="nav_button">
@@ -74,8 +73,8 @@ class NavBar extends React.Component {
                                 </button>
                             </div>
                         </div>
-                    </div>
-                </Slide>
+                    </Fade>
+                </div>
             </React.Fragment>
         );
     }
