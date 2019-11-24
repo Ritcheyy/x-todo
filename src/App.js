@@ -64,16 +64,11 @@ class App extends React.Component {
             color: getRandomColor(),
             user_id: window.localStorage.getItem("name")
         };
-        this.state.taskList.forEach(list => {
-            if (list.title !== title) {
-                this.setState({
-                    taskList: this.state.taskList.push(newList)
-                });
-                window.localStorage.setItem("taskList", JSON.stringify(this.state.taskList));
-            } else {
-                return "error";
-            }
+        this.setState({
+            taskList: this.state.taskList.push(newList)
         });
+
+        window.localStorage.setItem("taskList", JSON.stringify(this.state.taskList));
     };
 
     render() {
