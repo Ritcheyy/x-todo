@@ -19,6 +19,16 @@ class NavBar extends React.Component {
     toggleNav = state => {
         this.setState({ openMenu: state });
     };
+
+    handleChange = e => {
+        let formData = new FormData();
+
+        formData.append("picture", this.refs.file.files[0]);
+
+        console.log(formData.get("picture"));
+        console.log(this.refs);
+        console.log(e.target)
+    };
     render() {
         return (
             <React.Fragment>
@@ -53,11 +63,13 @@ class NavBar extends React.Component {
                             </li>
                         )}
                         <li className="nav-item float-right">
-                            <img
-                                src={require("../../../assets/img/png/profile-img.png")}
-                                className="nav-link"
-                                alt="nav"
-                            />
+                            <button type="button" data-toggle="modal" data-target="#uploadModal">
+                                <img
+                                    src={require("../../../assets/img/svg/user-placeholder.svg")}
+                                    className="nav-link"
+                                    alt="nav"
+                                />
+                            </button>
                         </li>
                     </ul>
                     <Fade>
@@ -74,6 +86,41 @@ class NavBar extends React.Component {
                             </div>
                         </div>
                     </Fade>
+
+                    <div
+                        className="modal fade"
+                        id="uploadModal"
+                        tabIndex="-1"
+                        role="dialog"
+                        aria-labelledby="uploadModal"
+                        aria-hidden="true"
+                    >
+                        <div className="modal-dialog" role="document">
+                            <div className="modal-content">
+                                <div className="modal-header">
+                                    <h5 className="modal-title" id="uploadModalLabel">
+                                        Upload Profile Picture
+                                    </h5>
+                                    <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div className="modal-body">
+                                    <input
+                                        type="file"
+                                        onChange={this.handleChange}
+                                        ref="file"
+                                        name="picture"
+                                    />
+                                </div>
+                                <div className="modal-footer">
+                                    <button type="button" className="btn btn-secondary" data-dismiss="modal">
+                                        Done
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </React.Fragment>
         );
