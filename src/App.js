@@ -36,6 +36,7 @@ class App extends React.Component {
                 return list;
             })
         });
+        window.localStorage.setItem("taskList", JSON.stringify(this.state.taskList));
     };
 
     createTask = task => {
@@ -52,6 +53,7 @@ class App extends React.Component {
                 return list;
             })
         });
+        window.localStorage.setItem("taskList", JSON.stringify(this.state.taskList));
     };
 
     createList = title => {
@@ -63,7 +65,7 @@ class App extends React.Component {
             user_id: window.localStorage.getItem("name")
         };
         this.state.taskList.forEach(list => {
-            if (list.title != title) {
+            if (list.title !== title) {
                 this.setState({
                     taskList: this.state.taskList.push(newList)
                 });
