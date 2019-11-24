@@ -82,7 +82,7 @@ class NewTask extends React.Component {
                                 <textarea
                                     id="new-task-text"
                                     className="md-textarea form-control"
-                                    rows="3"
+                                    rows="1"
                                     value={this.state.taskTitle}
                                     onChange={this.handleChange}
                                     required

@@ -1,0 +1,11 @@
+.newList{
+    padding: 25px;
+}
+
+.new-list_button{
+    margin-top: 80px;
+}
+
+.new-list_button button{
+    padding: 15px!important;
+}

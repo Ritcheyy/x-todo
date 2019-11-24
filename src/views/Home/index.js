@@ -7,6 +7,7 @@ import NavBar from "../../components/Layouts/Navbar";
 import { withRouter } from "react-router-dom";
 import Slide from "react-reveal/Slide";
 import getRandomColor from "../../utils/colors";
+import { Link } from "react-router-dom";
 
 class Home extends React.Component {
     constructor() {
@@ -65,7 +66,7 @@ class Home extends React.Component {
 
     handleSubmit = () => {
         window.localStorage.setItem("name", this.state.name);
-        this.props.history.go()
+        this.props.history.go();
     };
     render() {
         return (
@@ -74,7 +75,7 @@ class Home extends React.Component {
                     <Slide left>
                         <NavBar />
                         <div className="home mb-5">
-                            <Greeting hour={this.state.hour} name={this.state.name}/>
+                            <Greeting hour={this.state.hour} name={this.state.name} />
                             <AppClock
                                 day={this.state.day}
                                 month={this.state.month}
@@ -83,14 +84,13 @@ class Home extends React.Component {
                             />
                             <div className="text-custom-primary pt-2 mb-5">
                                 <h5 className="font-weight-normal float-left mt-1">Task Lists</h5>
-                                <button
-                                    type="button"
+                                <Link
                                     className="btn btn-sm btn-danger float-right"
                                     id="btnAddTask"
-                                    onClick={() => this.props.createList("New List")}
+                                    to="/list/new"
                                 >
                                     <i className="fas fa-plus"></i>
-                                </button>
+                                </Link>
                             </div>
                             <div className="tasks-slider">
                                 {this.props.taskList.map(list => {
