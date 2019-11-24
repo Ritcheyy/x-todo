@@ -40,7 +40,7 @@ class NewTask extends React.Component {
                 title: this.state.taskTitle
             };
             this.props.createTask(task);
-            this.props.history.push(`/task/${this.props.listId}`);
+            this.props.history.push('/');
         } else {
             this.setState({
                 formError: true

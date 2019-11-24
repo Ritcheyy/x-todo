@@ -1,20 +1,67 @@
-.nav{
+@import url("https://fonts.googleapis.com/css?family=Indie+Flower&display=swap");
+
+.nav {
     /*display: block;*/
     height: 50px;
     padding-right: 25px;
     padding-left: 25px;
 }
 
-.nav .nav-item img{
+.nav .nav-item img {
     cursor: pointer;
     max-height: 50px;
 }
 
-.nav .nav-item .back-arrow{
+.nav .nav-item .back-arrow {
     padding: 1rem;
 }
 
-.nav .nav-link{
+.nav .nav-link {
     padding-right: 0;
     padding-left: 0;
+}
+
+.sideBar {
+    min-height: 100vh;
+    width: 100%;
+    position: fixed;
+    z-index: 2;
+    opacity: 0.9;
+    background: rgb(243, 243, 243);
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    overflow: none;
+    scroll-behavior: none;
+    padding-top: 70px;
+    display: none;
+}
+
+.title {
+    font-size: 70px;
+    padding-bottom: -50px;
+    font-family: "Indie Flower", cursive;
+}
+
+.nav_button {
+    width: 50%;
+    margin: auto;
+}
+
+.nav_button button {
+    padding: 20px;
+}
+
+.cancel_nav {
+    position: absolute;
+    z-index: 5;
+    top: 0;
+    left: 0;
+    padding-left: 18px!important;
+}
+
+.display{
+    display: flex
 }
