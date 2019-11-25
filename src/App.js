@@ -11,11 +11,12 @@ class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            taskList: []
+            taskList: [],
+            filteredTaskList: []
         };
     }
     componentDidMount() {
-        if (window.localStorage.getItem("taskList")) {
+        if (window.localStorage.getItem("taskList") && window.localStorage.getItem("filteredTaskList")) {
             const lists = JSON.parse(window.localStorage.getItem("taskList"));
             let usersList = [];
             lists.map(list => {
@@ -23,15 +24,20 @@ class App extends React.Component {
                     usersList.push(list);
                 }
             });
-            this.setState({ taskList: usersList });
-            
+            this.setState({
+                filteredTaskList: usersList,
+                taskList: JSON.parse(window.localStorage.getItem("taskList"))
+            });
         } else {
             window.localStorage.setItem("taskList", JSON.stringify([]));
-            this.setState({ taskList: JSON.parse(window.localStorage.getItem("taskList")) });
+            window.localStorage.setItem("filteredTaskList", JSON.stringify([]));
+            this.setState({
+                taskList: JSON.parse(window.localStorage.getItem("taskList")),
+                filteredTaskList: JSON.parse(window.localStorage.getItem("filteredTaskList"))
+            });
         }
     }
 
-    
     markComplete = ids => {
         this.setState({
             taskList: this.state.taskList.map(list => {
@@ -75,10 +81,12 @@ class App extends React.Component {
             user_id: window.localStorage.getItem("name")
         };
         this.setState({
-            taskList: this.state.taskList.push(newList)
+            taskList: this.state.taskList.push(newList),
+            filteredTaskList: this.state.filteredTaskList.push(newList)
         });
 
         window.localStorage.setItem("taskList", JSON.stringify(this.state.taskList));
+        window.localStorage.setItem("filteredTaskList", JSON.stringify(this.state.filteredTaskList));
     };
 
     render() {
@@ -89,7 +97,7 @@ class App extends React.Component {
                         <Route
                             exact
                             path="/"
-                            render={props => <Home taskList={this.state.taskList} markComplete={this.markComplete} />}
+                            render={props => <Home taskList={this.state.filteredTaskList} markComplete={this.markComplete} />}
                         />
 
                         <Route path="/list/new" render={props => <NewList createList={this.createList} />} />
