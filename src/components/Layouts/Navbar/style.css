@@ -21,6 +21,11 @@
     padding-left: 0;
 }
 
+.nav-item button{
+    background: transparent;
+    border: 0px!important;
+}
+
 .sideBar {
     min-height: 100vh;
     width: 100%;
