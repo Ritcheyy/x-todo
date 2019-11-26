@@ -18,7 +18,7 @@ class NewList extends React.Component {
     submit = e => {
         e.preventDefault();
         this.props.createList(this.state.listName);
-        this.props.history.push("/");
+        setTimeout(() => this.props.history.push("/"), 3000);
     };
 
     render() {
