@@ -84,25 +84,30 @@ class Home extends React.Component {
                             />
                             <div className="text-custom-primary pt-2 mb-5">
                                 <h5 className="font-weight-normal float-left mt-1">Task Lists</h5>
-                                <Link
-                                    className="btn btn-sm btn-danger float-right"
-                                    id="btnAddTask"
-                                    to="/list/new"
-                                >
+                                <Link className="btn btn-sm btn-danger float-right" id="btnAddTask" to="/list/new">
                                     <i className="fas fa-plus"></i>
                                 </Link>
                             </div>
                             <div className="tasks-slider">
-                                {this.props.taskList.map(list => {
-                                    return (
-                                        <Task
-                                            onClick={() => this.openTask(list.id)}
-                                            list={list}
-                                            key={list.id}
-                                            markComplete={this.props.markComplete}
-                                        />
-                                    );
-                                })}
+                                {this.props.taskList.length > 0 ? (
+                                    this.props.taskList.map(list => {
+                                        return (
+                                            <Task
+                                                onClick={() => this.openTask(list.id)}
+                                                list={list}
+                                                key={list.id}
+                                                markComplete={this.props.markComplete}
+                                            />
+                                        );
+                                    })
+                                ) : (
+                                    <div className="no-task">
+                                        <p className="no-task-text">
+                                            You have not entered any task yet,
+                                            <br /> <b><Link to="/list/new">Add a List to begin</Link></b>{" "}
+                                        </p>
+                                    </div>
+                                )}
                             </div>
                         </div>
                     </Slide>
