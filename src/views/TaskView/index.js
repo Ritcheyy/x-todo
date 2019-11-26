@@ -15,6 +15,10 @@ class TaskView extends React.Component {
         this.props.markComplete(ids);
     };
 
+    deleteList = id => {
+        this.props.deleteList(id, this.props);
+    };
+
     render() {
         return (
             <React.Fragment>
@@ -32,12 +36,17 @@ class TaskView extends React.Component {
                             <h5 className="task-view__header__title float-left font-weight-bold">
                                 {this.props.list.title}
                             </h5>
+                            <div className="float-right d-flex">
+                                <Link to={"/task/new/" + this.props.list.id.toString()}>
+                                    <div className="task-view_header_btn">
+                                        <i className="fa fa-plus"></i>
+                                    </div>
+                                </Link>
 
-                            <Link to={"/task/new/" + this.props.list.id.toString()}>
-                                <div className="task-view_header_btn float-right">
-                                    <i className="fa fa-plus"></i>
+                                <div className="trash" onClick={() => this.deleteList(this.props.match.params.id)}>
+                                    <i className="far fa-trash-alt"></i>
                                 </div>
-                            </Link>
+                            </div>
                         </div>
                         <div className="task-view__body">
                             {this.props.list.tasks

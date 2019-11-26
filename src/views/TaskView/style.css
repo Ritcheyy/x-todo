@@ -19,6 +19,7 @@
 }
 
 .task-view .task-view_header_btn i{
+    margin: 0 20px;
     font-size: 24px;
 }
 
@@ -32,4 +33,10 @@
 
 .task-view .task-view__body{
     margin-top: 30px;
+}
+
+.trash{
+    margin-top: -5px;
+    color: #ffffff;
+    font-size: 24px;
 }

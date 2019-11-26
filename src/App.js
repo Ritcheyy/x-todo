@@ -11,8 +11,8 @@ class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            taskList: [],
-            filteredTaskList: []
+            taskList: "",
+            filteredTaskList: ""
         };
     }
     componentDidMount() {
@@ -24,9 +24,8 @@ class App extends React.Component {
                     usersList.push(list);
                 }
             });
-            this.setState({
-                filteredTaskList: usersList,
-                taskList: JSON.parse(window.localStorage.getItem("taskList"))
+            this.setState({ filteredTaskList: usersList, taskList: lists }, () => {
+                return;
             });
         } else {
             window.localStorage.setItem("taskList", JSON.stringify([]));
@@ -89,6 +88,31 @@ class App extends React.Component {
         window.localStorage.setItem("filteredTaskList", JSON.stringify(this.state.filteredTaskList));
     };
 
+    deleteList = (id, props) => {
+        this.state.filteredTaskList.forEach(element => {
+            if (element.id.toString() === id) {
+                let newTaskList = this.state.taskList.filter(value => {
+                    return value.id != id;
+                });
+
+                let newFilteredList = this.state.filteredTaskList.filter(value => {
+                    return value.id != id;
+                });
+
+                this.setState(
+                    {
+                        taskList: newTaskList,
+                        filteredTaskList: newFilteredList
+                    },
+                    () => {
+                        props.history.push("/");
+                    }
+                );
+                window.localStorage.setItem("taskList", JSON.stringify(newTaskList));
+            }
+        });
+    };
+
     render() {
         return (
             <Router>
@@ -97,7 +121,9 @@ class App extends React.Component {
                         <Route
                             exact
                             path="/"
-                            render={props => <Home taskList={this.state.filteredTaskList} markComplete={this.markComplete} />}
+                            render={props => (
+                                <Home taskList={this.state.filteredTaskList} markComplete={this.markComplete} />
+                            )}
                         />
 
                         <Route path="/list/new" render={props => <NewList createList={this.createList} />} />
@@ -113,10 +139,15 @@ class App extends React.Component {
                             path="/task/:id"
                             render={props => (
                                 <TaskView
-                                    list={this.state.taskList.find(
-                                        list => list.id.toString() === props.match.params.id
-                                    )}
+                                    list={
+                                        // console.log(this.state.filteredTaskList.find(list => list.id == 1))
+                                        // console.log(this.state.filteredTaskList)
+                                        this.state.filteredTaskList.find(
+                                            list => list.id.toString() === props.match.params.id
+                                        )
+                                    }
                                     markComplete={this.markComplete}
+                                    deleteList={this.deleteList}
                                 />
                             )}
                         />
