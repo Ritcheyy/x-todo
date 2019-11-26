@@ -3,6 +3,7 @@ import Fade from "react-reveal/Fade";
 import Slide from "react-reveal/Slide";
 import "./style.css";
 import { withRouter } from "react-router-dom";
+import NavBar from "../../components/Layouts/Navbar";
 
 class NewList extends React.Component {
     constructor() {
@@ -25,6 +26,7 @@ class NewList extends React.Component {
         return (
             <React.Fragment>
                 <Slide right>
+                    <NavBar type="back" />
                     <div className="newList">
                         <div className="new-task__header clearfix">
                             <h5 className="new-task__header__title float-left font-weight-bold">Create a New List</h5>
