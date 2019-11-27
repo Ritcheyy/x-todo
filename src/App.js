@@ -15,7 +15,12 @@ class App extends React.Component {
             filteredTaskList: ""
         };
     }
-    componentDidMount() {
+    componentWillMount() {
+        // console.log("hey");
+        this.gettaskList();
+    }
+
+    gettaskList = () => {
         if (window.localStorage.getItem("taskList") && window.localStorage.getItem("filteredTaskList")) {
             const lists = JSON.parse(window.localStorage.getItem("taskList"));
             let usersList = [];
@@ -23,10 +28,9 @@ class App extends React.Component {
                 if (list.user_id === window.localStorage.getItem("name")) {
                     usersList.push(list);
                 }
+                return lists;
             });
-            this.setState({ filteredTaskList: usersList, taskList: lists }, () => {
-                return;
-            });
+            this.setState({ filteredTaskList: usersList, taskList: lists });
         } else {
             window.localStorage.setItem("taskList", JSON.stringify([]));
             window.localStorage.setItem("filteredTaskList", JSON.stringify([]));
@@ -35,7 +39,7 @@ class App extends React.Component {
                 filteredTaskList: JSON.parse(window.localStorage.getItem("filteredTaskList"))
             });
         }
-    }
+    };
 
     markComplete = ids => {
         this.setState({
@@ -79,35 +83,34 @@ class App extends React.Component {
             color: getRandomColor(),
             user_id: window.localStorage.getItem("name")
         };
+        let newTaskList = this.state.taskList
+        let newFilteredList = this.state.filteredTaskList
+        newTaskList.push(newList)
+        newFilteredList.push(newList)
         this.setState({
-            taskList: this.state.taskList.push(newList),
-            filteredTaskList: this.state.filteredTaskList.push(newList)
+            taskList: newTaskList,
+            filteredTaskList: newFilteredList
         });
 
         window.localStorage.setItem("taskList", JSON.stringify(this.state.taskList));
         window.localStorage.setItem("filteredTaskList", JSON.stringify(this.state.filteredTaskList));
     };
 
-    deleteList = (id, props) => {
+    deleteList = id => {
         this.state.filteredTaskList.forEach(element => {
             if (element.id.toString() === id) {
                 let newTaskList = this.state.taskList.filter(value => {
-                    return value.id != id;
+                    return value.id.toString()!== id;
                 });
 
                 let newFilteredList = this.state.filteredTaskList.filter(value => {
-                    return value.id != id;
+                    return value.id.toString() !== id;
                 });
 
-                this.setState(
-                    {
-                        taskList: newTaskList,
-                        filteredTaskList: newFilteredList
-                    },
-                    () => {
-                        props.history.push("/");
-                    }
-                );
+                this.setState({
+                    taskList: newTaskList,
+                    filteredTaskList: newFilteredList
+                });
                 window.localStorage.setItem("taskList", JSON.stringify(newTaskList));
             }
         });
@@ -139,13 +142,9 @@ class App extends React.Component {
                             path="/task/:id"
                             render={props => (
                                 <TaskView
-                                    list={
-                                        // console.log(this.state.filteredTaskList.find(list => list.id == 1))
-                                        // console.log(this.state.filteredTaskList)
-                                        this.state.filteredTaskList.find(
-                                            list => list.id.toString() === props.match.params.id
-                                        )
-                                    }
+                                    list={this.state.filteredTaskList.find(
+                                        list => list.id.toString() === props.match.params.id
+                                    )}
                                     markComplete={this.markComplete}
                                     deleteList={this.deleteList}
                                 />

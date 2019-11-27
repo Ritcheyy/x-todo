@@ -16,7 +16,8 @@ class TaskView extends React.Component {
     };
 
     deleteList = id => {
-        this.props.deleteList(id, this.props);
+        this.props.deleteList(id);
+        this.props.history.push('/')
     };
 
     render() {
@@ -43,7 +44,7 @@ class TaskView extends React.Component {
                                     </div>
                                 </Link>
 
-                                <div className="trash" onClick={() => this.deleteList(this.props.match.params.id)}>
+                                <div className="trash task-view_header_btn" onClick={() => this.deleteList(this.props.match.params.id)}>
                                     <i className="far fa-trash-alt"></i>
                                 </div>
                             </div>

@@ -16,10 +16,16 @@ class NewList extends React.Component {
     handleChange = e => {
         this.setState({ listName: e.target.value });
     };
-    submit = e => {
+    handleCreate = e => {
         e.preventDefault();
-        this.props.createList(this.state.listName);
-        setTimeout(() => this.props.history.push("/"), 3000);
+        if (this.state.listName) {
+            this.props.createList(this.state.listName);
+            this.props.history.push("/");
+        } else {
+            this.setState({
+                formError: true
+            });
+        }
     };
 
     render() {
@@ -36,7 +42,7 @@ class NewList extends React.Component {
                                 "new-list__body needs-validation " + (this.state.formError ? "was-validated" : "")
                             }
                             noValidate
-                            onSubmit={this.submit}
+                            onSubmit={this.handleCreate}
                         >
                             <div className="md-form new-task_input mt-5">
                                 <textarea

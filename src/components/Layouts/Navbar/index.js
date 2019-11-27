@@ -1,6 +1,6 @@
 import React from "react";
 import "./style.css";
-import { withRouter, Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import Fade from "react-reveal/Fade";
 
 class NavBar extends React.Component {
