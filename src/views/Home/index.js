@@ -34,23 +34,23 @@ class Home extends React.Component {
     };
 
     doubleDigit = value => {
-        
+        if (value < 10) {
+            return "0" + value;
+        } else {
+            return value;
+        }
     };
 
     getTime() {
         const time = new Date();
-        const presentDay = time.getDay();
-        const month = time.getMonth();
-        // console.log(presentDay)
-        // console.log(dates);
         this.setState({
             day: dates.daysOfTheWeek[time.getDay()],
             date: time.getDate(),
             month: dates.monthsOfTheYear[time.getMonth()],
             time: {
-                hour: time.getHours(),
-                minute: time.getMinutes(),
-                second: time.getSeconds()
+                hour: this.doubleDigit(time.getHours()),
+                minute: this.doubleDigit(time.getMinutes()),
+                second: this.doubleDigit(time.getSeconds())
             }
         });
     }
