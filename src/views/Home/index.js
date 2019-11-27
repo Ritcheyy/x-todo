@@ -8,12 +8,17 @@ import { withRouter } from "react-router-dom";
 import Slide from "react-reveal/Slide";
 import getRandomColor from "../../utils/colors";
 import { Link } from "react-router-dom";
+import dates from "../../utils/date";
 
 class Home extends React.Component {
     constructor() {
         super();
         this.state = {
-            time: "00000000",
+            time: {
+                hour: "00",
+                minute: "00",
+                second: "00"
+            },
             day: "",
             date: "",
             month: "",
@@ -28,25 +33,38 @@ class Home extends React.Component {
         setTimeout(() => this.props.history.push(`/task/${id}`), 150);
     };
 
+    doubleDigit = value => {
+        
+    };
+
     getTime() {
         const time = new Date();
-        const splittedTime = time.toUTCString().split(" ");
+        const presentDay = time.getDay();
+        const month = time.getMonth();
+        // console.log(presentDay)
+        // console.log(dates);
         this.setState({
-            day: splittedTime[0],
-            date: splittedTime[1],
-            month: splittedTime[2],
-            time: splittedTime[4]
+            day: dates.daysOfTheWeek[time.getDay()],
+            date: time.getDate(),
+            month: dates.monthsOfTheYear[time.getMonth()],
+            time: {
+                hour: time.getHours(),
+                minute: time.getMinutes(),
+                second: time.getSeconds()
+            }
         });
     }
     componentDidMount() {
+        // console.log(dates);
+        // this.getTime();
         this.setState({
             interval: setInterval(() => {
                 this.getTime();
             }, 1000)
         });
 
-        const date = new Date();
-        this.setState({ hour: date.getUTCHours() });
+        // const date = new Date();
+        // this.setState({ hour: date.getUTCHours() });
 
         if (window.localStorage.getItem("name")) {
             this.setState({
@@ -104,7 +122,10 @@ class Home extends React.Component {
                                     <div className="no-task">
                                         <p className="no-task-text">
                                             You have not entered any task yet,
-                                            <br /> <b><Link to="/list/new">Add a List to begin</Link></b>{" "}
+                                            <br />{" "}
+                                            <b>
+                                                <Link to="/list/new">Add a List to begin</Link>
+                                            </b>{" "}
                                         </p>
                                     </div>
                                 )}
