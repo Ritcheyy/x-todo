@@ -16,7 +16,6 @@ class App extends React.Component {
         };
     }
     componentWillMount() {
-        // console.log("hey");
         this.gettaskList();
     }
 

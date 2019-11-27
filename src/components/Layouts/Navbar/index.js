@@ -20,15 +20,7 @@ class NavBar extends React.Component {
         this.setState({ openMenu: state });
     };
 
-    handleChange = e => {
-        let formData = new FormData();
-
-        formData.append("picture", this.refs.file.files[0]);
-
-        console.log(formData.get("picture"));
-        console.log(this.refs);
-        console.log(e.target)
-    };
+    
     render() {
         return (
             <React.Fragment>

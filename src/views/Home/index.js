@@ -55,16 +55,14 @@ class Home extends React.Component {
         });
     }
     componentDidMount() {
-        // console.log(dates);
-        // this.getTime();
         this.setState({
             interval: setInterval(() => {
                 this.getTime();
             }, 1000)
         });
 
-        // const date = new Date();
-        // this.setState({ hour: date.getUTCHours() });
+        const date = new Date();
+        this.setState({ hour: date.getHours() });
 
         if (window.localStorage.getItem("name")) {
             this.setState({
