@@ -31,7 +31,7 @@
     width: 100%;
     position: fixed;
     z-index: 2;
-    opacity: 0.7!important;
+    opacity: 1!important;
     background: rgb(243, 243, 243);
     top: 0;
     display: flex;
